@@ -1,0 +1,60 @@
+Ex1:
+A/
+	le chemin sqrt1.c:+6:+6:+6:+6:+6:+6:+6:+6:+6:+6:+6
+	correspond à une exécution de sqrt1.c où le test de la ligne 6 est vrai 11 fois d'affilée puis le programme s'arrète.
+	la 10 ème fois que le test de la ligne 6 est validée on arrive à sum = 100 donc si le test est validé une 11ème fois c'est que le paramètre 'a' était supérieur à 100 ce qui contredit le domaine des variables que l'on a définit de 0 à 100
+
+	En réduisant à 5-path on ne peut atteindre que la valeur sum=36, 'a' est donc entre 0 et 100 donc on a plus de chemin infaisables
+
+B/
+	la fonction sqrt de sqrt2.c contient deux lignes où il y a des tests, le while en ligne 6 et le if en ligne 9, en réglant le path à 5-path on a pas un path long au maximum de 5 mais chacqune des ligne 6 et 9 peuvent etre executée jusqu'à 5 fois.
+
+C/
+	pour sqrt3.c on a les paths :
+		
+		infeasible	
+		sqrt3.c:+6:+6:+6:+6:+6
+
+	et pour sqrt1.c :
+		
+		covered	
+		sqrt1.c:+6:+6:+6:+6:+6:-6
+
+		infeasible	
+		sqrt1.c:+6:+6:+6:+6:+6:+6	
+
+	les autres paths sont les mêmes pour sqrt1.c et sqrt2.c
+
+	dans sqrt3 on s'arrète à la 4ème itération car 25 étant le maximum de 'a' et comme on a sum=25 à la 4ème itération  le test sum<a rend faux et donc le chemin avec une 5ème itération 
+	(sqrt3.c:+6:+6:+6:+6:+6) est infaisable.
+
+
+	alors que pour sqrt1.c :  
+		sqrt1.c:+6:+6:+6:+6:+6:-6 est faisable, à la 4ème itération de la boucle on a sum = 25 et la condition étant while(sum <= a), on peut continuer le path car a peut etre égal à 25. donc on effectue une nouvelle fois la boucle, on arrive à sum = 36 puis comme sum > a on s'arrète là et on renvoie i=5 et on a donc bien calculé la racine carrée de 25 car on s'est arrêté juste avant la boucle pour sum = 36.
+		par contre sqrt1.c:+6:+6:+6:+6:+6:+6 est infaisable car le 5ème test revoie forcément faux
+		car sum=36 est supérieur à a=25
+
+
+	le problème vient de la condition du while (sum < a) dans sqrt3.c :
+		pour a=25 on revoie 4 or 4*4=16, on devrait plutôt passer à l'itération suivante pour renvoyer 5 car 5*5=25. 
+		Donc la condition devrait être (sum<=a).
+		Ou alors il faudrait que i soit initialisé à 1 comme ça dans chaque itération on a i*i=sum et on n'a pas besoin d'aller à l'itération suivante pour renvoyer le bon résultat (ce qui serait mieux car on ne ferait pas une itération inutile en plus comme dans sqrt1.c).
+
+
+D/
+	il faut que i² ≤ a < (i+ 1)² si a est positif et que i=0 sinon
+
+E/
+	Pour sqrt3.c : 
+		pour la valeur a=4 on renvoie 1 or 1 <= 4 < 4 car on a 4=a=(i+ 1)²
+		c'est l'erreur évoqué à le question C, on devrait tester sum<=a ou initialiser i à 1 au lieu de 0.
+
+	Pour sqrt4.c :
+		quand a est négatif on renvoie bien 0
+		
+		pour a=1 on renvoie 2 au lieu de 1. À la première itération on passe le test du while sum<=a car 1=sum=a, on passe alors aussi le test du if car c'est le même et on augmente donc i de 2 pour renvoyer 2.
+
+		par contre quand a=4 on renvoie 2. À la première itération on passe le test du while sum<=a car (sum=1) < (a=4) et on a donc tm=2 ,le if passe aussi car c'est le même test, on a donc tm=4 et sum=5 ensuite après le if on a sum=tm+sum donc sum=9 donc le prochain test du while rend faux car (sum=9) > (a=4) on renvoie don la valeur actuelle de i soit 2. 
+
+		(en fait le problème viendrait du fait que on fait sum = tm+sum après le if alors qu'on devrait le faire avant comme dans sqrt2.c)
+
