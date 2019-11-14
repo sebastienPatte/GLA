@@ -31,7 +31,7 @@ C/
 
 	alors que pour sqrt1.c :  
 		sqrt1.c:+6:+6:+6:+6:+6:-6 est faisable, à la 4ème itération de la boucle on a sum = 25 et la condition étant while(sum <= a), on peut continuer le path car a peut etre égal à 25. donc on effectue une nouvelle fois la boucle, on arrive à sum = 36 puis comme sum > a on s'arrète là et on renvoie i=5 et on a donc bien calculé la racine carrée de 25 car on s'est arrêté juste avant la boucle pour sum = 36.
-		par contre sqrt1.c:+6:+6:+6:+6:+6:+6 est infaisable car le 5ème test revoie forcément faux
+		par contre sqrt1.c:+6:+6:+6:+6:+6:+6 est infaisable car le 5ème test renvoie forcément faux
 		car sum=36 est supérieur à a=25
 
 
@@ -45,16 +45,32 @@ D/
 	il faut que i² ≤ a < (i+ 1)² si a est positif et que i=0 sinon
 
 E/
+	Pour sqrt1.c :
+		
+		pas d'erreur trouvée
+
+	Pour sqrt2.c :
+		
+		pas d'erreur trouvée
+
 	Pour sqrt3.c : 
+		
 		pour la valeur a=4 on renvoie 1 or 1 <= 4 < 4 car on a 4=a=(i+ 1)²
 		c'est l'erreur évoqué à le question C, on devrait tester sum<=a ou initialiser i à 1 au lieu de 0.
 
 	Pour sqrt4.c :
-		quand a est négatif on renvoie bien 0
 		
-		pour a=1 on renvoie 2 au lieu de 1. À la première itération on passe le test du while sum<=a car 1=sum=a, on passe alors aussi le test du if car c'est le même et on augmente donc i de 2 pour renvoyer 2.
+		Par exemple pour a=1 on renvoie 2 au lieu de 1. À la première itération on passe le test du while sum<=a car 1=sum=a, on passe alors aussi le test du if car c'est le même et on augmente donc i de 2 pour renvoyer 2.
 
-		par contre quand a=4 on renvoie 2. À la première itération on passe le test du while sum<=a car (sum=1) < (a=4) et on a donc tm=2 ,le if passe aussi car c'est le même test, on a donc tm=4 et sum=5 ensuite après le if on a sum=tm+sum donc sum=9 donc le prochain test du while rend faux car (sum=9) > (a=4) on renvoie don la valeur actuelle de i soit 2. 
+		Dans la boucle while on fait tm+2 et on fait le if(sum <= a) et si ce test est vrai on fait i+2 et on augmente aussi tm et sum. Mais du coup on passe dans le if à chaque fois alors qu'on devrait y passer seulement si après avoir augmenté sum on peut repasser le test sum<=a. Le problème vient donc de la ligne 15 (sum=tm+sum) qui devrait être dans le while avant le if comme dans sqrt2.c
 
-		(en fait le problème viendrait du fait que on fait sum = tm+sum après le if alors qu'on devrait le faire avant comme dans sqrt2.c)
+		Et alors pour a=1 on passe le while(sum<=a), on a ensuite tm=3 et 
+		sum=4 donc sum>a et on passe dans le else, on fait i=i+1 donc on renvoie i=1
 
+Ex2:
+
+	A/
+		n == dim(A)
+		∀ INDEX, 0<= INDEX <= n, A[INDEX] <= A[INDEX+1]
+
+		
