@@ -2,9 +2,9 @@ Ex1:
 A/
 	le chemin sqrt1.c:+6:+6:+6:+6:+6:+6:+6:+6:+6:+6:+6
 	correspond à une exécution de sqrt1.c où le test de la ligne 6 est vrai 11 fois d'affilée puis le programme s'arrète.
-	la 10 ème fois que le test de la ligne 6 est validée on arrive à sum = 100 donc si le test est validé une 11ème fois c'est que le paramètre 'a' était supérieur à 100 ce qui contredit le domaine de l'argument 'a' que l'on a définit de 0 à 100
+	la 10 ème fois que le test de la ligne 6 est validée on arrive à sum = 100 donc si le test est validé une 11ème fois c'est que le paramètre 'a' était supérieur à 100 ce qui contredit le domaine de l'argument 'a' que l'on a définit de 0 à 100.
 
-	En réduisant à 5-path on ne peut atteindre que la valeur sum=36, 'a' est donc entre 0 et 100 donc on a plus de chemin infaisables
+	En réduisant à 5-path (on fait 5 fois la boucle au maximum) on ne peut atteindre que la valeur sum=36, 'a' est donc entre 0 et 100 donc on a plus de chemin infaisables.
 
 B/
 	la fonction sqrt de sqrt2.c contient deux lignes où il y a des tests, le while en ligne 6 et le if en ligne 9, en réglant le path à 5-path on a pas un path long au maximum de 5 mais chacqune des ligne 6 et 9 peuvent etre executée jusqu'à 5 fois.

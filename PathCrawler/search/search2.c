@@ -1,6 +1,6 @@
 /* Une implementation de la recherche dichotomique
    d'un element "elem" dans un tableau ordonne "A" */
-
+#include <stdio.h>
 int search( int A[], int n, int elem) {
   int low, high, mid, ret;
   
@@ -20,4 +20,8 @@ int search( int A[], int n, int elem) {
   }  
   
   return ret;
+}
+
+int main(){
+    printf("res = %d"search([1;2;3;4;5;6;7;8;9;10], 10, 11));
 }
