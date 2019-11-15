@@ -2,7 +2,7 @@ Ex1:
 A/
 	le chemin sqrt1.c:+6:+6:+6:+6:+6:+6:+6:+6:+6:+6:+6
 	correspond à une exécution de sqrt1.c où le test de la ligne 6 est vrai 11 fois d'affilée puis le programme s'arrète.
-	la 10 ème fois que le test de la ligne 6 est validée on arrive à sum = 100 donc si le test est validé une 11ème fois c'est que le paramètre 'a' était supérieur à 100 ce qui contredit le domaine des variables que l'on a définit de 0 à 100
+	la 10 ème fois que le test de la ligne 6 est validée on arrive à sum = 100 donc si le test est validé une 11ème fois c'est que le paramètre 'a' était supérieur à 100 ce qui contredit le domaine de l'argument 'a' que l'on a définit de 0 à 100
 
 	En réduisant à 5-path on ne peut atteindre que la valeur sum=36, 'a' est donc entre 0 et 100 donc on a plus de chemin infaisables
 
@@ -73,4 +73,8 @@ Ex2:
 		n == dim(A)
 		∀ INDEX, 0<= INDEX <= n, A[INDEX] <= A[INDEX+1]
 
-		
+	
+	E/
+		si A=[0;2;1] et elem = 1
+		on teste si A[0]==elem ce qui rend faux
+		on teste si A[1]==elem ce qui rend faux, mais A[1] > elem donc la fonction renvoie -1 alors que elem est l'élément suivant de A.
